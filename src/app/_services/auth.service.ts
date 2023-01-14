@@ -1,31 +1,42 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {map} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private AUTH_API_LOGIN = 'http://localhost:8099/login';
+  private AUTH_API_LOGIN = 'http://localhost:8081/api/auth';
+  private options = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  }
 
   constructor(private http: HttpClient) {
   }
 
-  login(loginInfo: string, headers: { headers: HttpHeaders }) {
-
-    console.log('here');
-
-    return this.http.post(this.AUTH_API_LOGIN, loginInfo, headers).pipe(
-      map((res: any) => {
-        console.log(res);
-        const token = res['token'];
-        if (token) {
-          localStorage.setItem('currentUser', JSON.stringify(token));
-        }
-        return res;
-      })
-    )
+  registerCompany(value: any): Observable<any> {
+    return this.http.post<any>(this.AUTH_API_LOGIN + '/register', value, this.options);
   }
+
+  loginAgent(value: {}): Observable<any> {
+    return this.http.post<any>(this.AUTH_API_LOGIN + '/authenticate', value, this.options);
+  }
+
+  loginCompany(value: {}): Observable<any> {
+    return this.http.post<any>(this.AUTH_API_LOGIN + '/authenticate', value, this.options);
+  }
+
+  logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    localStorage.removeItem("admin");
+    window.location.href = '/auth/login';
+  }
+
+
 }
 
 
