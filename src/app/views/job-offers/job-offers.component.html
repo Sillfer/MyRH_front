@@ -1,0 +1,5 @@
+<app-primary-navbar></app-primary-navbar>
+<div class="w-full mt-2.5  bg-gradient-to-r from-purple-200 to Fuchsia-500">
+  <h1 class="text-lg text-center font-semibold uppercase underline mb-4">Job offers</h1>
+  <app-job-offers-card *ngFor="let jobOffer of jobOffers" [jobOffers]="jobOffer"></app-job-offers-card>
+</div>

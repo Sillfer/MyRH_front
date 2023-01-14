@@ -1,0 +1,31 @@
+<div class='flex items-start justify-around mb-2'>
+  <div class="rounded-xl border p-5 shadow-md w-9/12 bg-white">
+    <div class="flex w-full items-center justify-between border-b pb-3">
+      <div class="flex items-center space-x-3">
+        <div class="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://picsum.photos/200/300')]"></div>
+        <div class="text-lg font-bold text-slate-700">{{ jobOffers.company.name }}</div>
+      </div>
+      <div class="flex items-center space-x-8">
+        <button class="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold">{{ jobOffers.title }}</button>
+        <div class="text-xs text-neutral-500">2 hours ago</div>
+      </div>
+    </div>
+
+    <div class="mt-4 mb-6">
+      <div class="mb-3 text-l"><span class="font-bold text-md">Contract-Type :</span>{{jobOffers.contractType }}</div>
+      <div class="text-sm text-neutral-600"><span
+        class="font-bold text-md">Description :</span>{{ jobOffers.description }}</div>
+      <div class="text-sm text-neutral-600"><span class="font-bold text-md">Profile :</span>{{ jobOffers.profile }}
+      </div>
+      <div class="text-sm text-neutral-600"><span class="font-bold text-md">Salary :</span>{{ jobOffers.salary }}</div>
+      <div class="text-sm text-neutral-600"><span
+        class="font-bold text-md">Experience Level :</span>{{ jobOffers!.experienceLevel }}</div>
+      <div class="text-sm text-neutral-600"><span
+        class="font-bold text-md">Education Level :</span>{{ jobOffers!.educationLevel }}</div>
+
+    </div>
+
+    <button (click)="OnClick">More Details</button>
+  </div>
+</div>
+
