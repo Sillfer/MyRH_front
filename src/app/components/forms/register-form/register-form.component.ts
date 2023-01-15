@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../../../_services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register-form',
@@ -10,8 +11,9 @@ import {AuthService} from "../../../_services/auth.service";
 })
 export class RegisterFormComponent implements OnInit{
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
   }
+
 
   registerForm = this.formBuilder.group({
     name: ['', Validators.required],
@@ -27,7 +29,7 @@ export class RegisterFormComponent implements OnInit{
     this.authService.registerCompany(this.registerForm.value).subscribe( data => {
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(this.registerForm.value));
-      window.location.href = '/';
+      this.router.navigateByUrl('/');
     } );
   }
 

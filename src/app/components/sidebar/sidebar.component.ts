@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CompanyAuth} from "../../_interfaces/company-auth";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sidebar',
@@ -10,7 +11,7 @@ export class SidebarComponent implements OnInit {
   collapseSidebar = "hidden";
   company: CompanyAuth = JSON.parse(localStorage.getItem('user') || '{}');
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -22,7 +23,8 @@ export class SidebarComponent implements OnInit {
   logout() {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    window.location.href = '/auth/login';
+    localStorage.removeItem('admin');
+    this.router.navigateByUrl('/auth/login');
   }
 
 }
