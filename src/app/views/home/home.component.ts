@@ -12,10 +12,10 @@ export class HomeComponent {
   constructor(private jobOfferService: AllJobsService) {}
 
   ngOnInit() {
-    this.jobOfferService.getAllJobsOffers().subscribe(data =>
-      // slice the array to get the last 5 elements
-      this.jobOffers = data.slice(Math.max(data.length - 3, 0))
-    );
+    // this.jobOfferService.getAllJobsOffers().subscribe(data =>
+    //   // slice the array to get the last 5 elements
+    //   this.jobOffers = data.slice(Math.max(data.length - 3, 0))
+    // );
   }
 
 }
