@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {JobOfferInterface} from "../_interfaces/job-offer";
 import {Router} from "@angular/router";
+import {ResponseOffer} from "../_interfaces/ResponseOffer";
 
 @Injectable({
   providedIn: 'root'
@@ -27,11 +28,27 @@ export class AllJobsService {
   }
 
   constructor(private Http: HttpClient) {
+
+    }
+
+
+
+  getPageFromUrl() {
+    let url = window.location.href;
+    let page = url.split('?')[1];
+    if (page) {
+      return page.split('=')[1];
+    }
+    return "1";
   }
 
 
-  getAllJobsOffers(): Observable<JobOfferInterface[]> {
-    return this.Http.get<JobOfferInterface[]>(this.ALL_JOBS_API, this.options);
+  getAllJobsOffers(): Observable<ResponseOffer> {
+    // get param page from url http://localhost:4200/job-offers?page=1
+    let page = parseInt(this.getPageFromUrl());
+    let url = this.ALL_JOBS_API + "?page=" + (page-1);
+    return this.Http.get<ResponseOffer>(url, this.options);
+    // return this.Http.get<JobOfferInterface[]>(this.ALL_JOBS_API, this.options);
   }
 
   addJobOffer(jobOffer: any): Observable<any> {

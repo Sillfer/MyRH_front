@@ -10,6 +10,8 @@ import {JobOfferInterface} from "../../../_interfaces/job-offer";
 export class JobOffersCardComponent implements OnInit {
   @Input() jobOffers!: JobOfferInterface;
 
+
+
   constructor() { }
 
   ngOnInit(): void {

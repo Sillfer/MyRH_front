@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,6 +37,7 @@ import { AgentComponent } from './layout/agent/agent.component';
 import { CardTableComponent } from './components/cards/card-table/card-table.component';
 import { CardSocialTrafficComponent } from './components/cards/card-social-traffic/card-social-traffic.component';
 import { CardPageVisitsComponent } from './components/cards/card-page-visits/card-page-visits.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,7 @@ import { CardPageVisitsComponent } from './components/cards/card-page-visits/car
     CardTableComponent,
     CardSocialTrafficComponent,
     CardPageVisitsComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +81,7 @@ import { CardPageVisitsComponent } from './components/cards/card-page-visits/car
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
+    SweetAlert2Module.forRoot()
 
   ],
   providers: [],
