@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AllJobsService} from "../../../_services/all-jobs.service";
 import {Router} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-addjob-form',
@@ -35,17 +36,15 @@ export class AddjobFormComponent implements OnInit {
 
   addJobOffer() {
     this.jobOfferService.addJobOffer(this.jobOfferForm.value).subscribe((data) => {
-      // when the addJobOffer method is called a pop up will appear that asks the use if they want to add another job offer if yes the form will be cleared and the user can add another job offer if no the user will be redirected to the dashboard
-      if (confirm("Job offer added successfully, do you want to add another job offer?")) {
-        this.jobOfferForm.reset();
-      } else {
         this.router.navigateByUrl('/company/dashboard');
-      }
       console.log(data);
     });
-
-
   }
+
+  // resetForm($event?: Swal.DismissReason) {
+  //   this.jobOfferForm.reset();
+  //   this.router.navigateByUrl('/company/add-job');
+  // }
 }
 
 

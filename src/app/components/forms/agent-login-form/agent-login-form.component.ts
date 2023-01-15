@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../_services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-agent-login-form',
@@ -13,7 +14,7 @@ export class AgentLoginFormComponent {
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
-  constructor(private _authService: AuthService) {
+  constructor(private _authService: AuthService,private router: Router) {
 
   }
 
@@ -24,7 +25,7 @@ export class AgentLoginFormComponent {
       localStorage.setItem('token', data.token);
       localStorage.setItem('admin', JSON.stringify(data.agent));
 
-      window.location.href = '/agent/dashboard';
+      this.router.navigateByUrl('/agent/dashboard');
     });
   }
 

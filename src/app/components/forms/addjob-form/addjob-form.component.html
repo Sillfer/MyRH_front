@@ -43,7 +43,8 @@
       </mat-card-content>
       <mat-card-actions>
         <div class="w-full ">
-          <button mat-raised-button class="w-full mb-4" color="primary" (click)="addJobOffer()">Register</button>
+          <button [swal]="['Success', 'Company Registered Successfully', 'success']"
+            mat-raised-button class="w-full mb-4" color="primary" (click)="addJobOffer()">Register</button>
         </div>
       </mat-card-actions>
     </mat-card>
